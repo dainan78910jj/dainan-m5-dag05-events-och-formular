@@ -33,7 +33,22 @@ button?.addEventListener("click", (e) => {
 // 3. Skriv funktionen uppdateraMeny(filter: Filter): void: hämta rätter med filtreraMeny, visa dem med visaMeny,
 //    uppdatera rubriken och markera den billigaste lunchen som dagens rätt (om det finns någon lunch).
 // 4. Anropa uppdateraMeny("alla") direkt, och koppla filterknapparna med kopplaFilter.
-// TODO
+
+function uppdateraMeny(filter: Filter): void {
+  const newMenu = filtreraMeny(meny, filter);
+
+  visaMeny(lista, newMenu);
+
+  const dishOfTheDay = billigast(meny);
+  if (dishOfTheDay) {
+    markeraDagensRatt(lista, dishOfTheDay.id);
+  }
+
+  uppdateraRubrik(rubrik, newMenu.length);
+}
+
+uppdateraMeny("alla");
+kopplaFilter(filterGrupp, uppdateraMeny);
 
 // DEL 3 (fördjupning): beställningen ---------------------------------------
 // 5. let order: OrderRad[] = []; Koppla kopplaLaggTill(lista, ...) så att klick lägger till i order och visar den
