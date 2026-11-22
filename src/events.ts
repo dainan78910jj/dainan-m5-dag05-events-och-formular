@@ -45,5 +45,8 @@ export function kopplaLaggTill(
   container: HTMLElement,
   vidLaggTill: (id: number) => void,
 ): void {
-  // TODO
+  const id = Number(container.getAttribute("data-id"));
+  if (!Number.isNaN(id)) {
+    vidLaggTill(id);
+  }
 }
