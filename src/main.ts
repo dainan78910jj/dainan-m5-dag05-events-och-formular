@@ -18,15 +18,22 @@ const filterGrupp = hamta("#filter");
 //    handelse.type och handelse.target i Console.
 // 2. Lägg till handelse.preventDefault() i lyssnaren. Vad händer med länken?
 //    Ta bort preventDefault igen när du provat.
-// TODO
 
+const button = document.querySelector("#hero .knapp");
+
+button?.addEventListener("click", (e) => {
+  // e.preventDefault();
+  console.log(`Event Type is ${e.type}, Event Target is ${e.target}.`);
+});
+
+// When e.preventDefault() is omitted, clicking the button directs to the target URL or anchor defined in the href attribute.
+// With the function applied, the default navigation behavior is prevented upon clicking.
 
 // DEL 2: filtret ----------------------------------------------------------
 // 3. Skriv funktionen uppdateraMeny(filter: Filter): void: hämta rätter med filtreraMeny, visa dem med visaMeny,
 //    uppdatera rubriken och markera den billigaste lunchen som dagens rätt (om det finns någon lunch).
 // 4. Anropa uppdateraMeny("alla") direkt, och koppla filterknapparna med kopplaFilter.
 // TODO
-
 
 // DEL 3 (fördjupning): beställningen ---------------------------------------
 // 5. let order: OrderRad[] = []; Koppla kopplaLaggTill(lista, ...) så att klick lägger till i order och visar den
