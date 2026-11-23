@@ -35,7 +35,7 @@ export function skapaRattKort(ratt: Ratt): HTMLElement {
   button.setAttribute("type", "button");
   button.setAttribute("class", "lagg-i-order");
   button.setAttribute("data-id", String(ratt.id));
-  button.setAttribute("aria-label", "Lägg Kardemummabulle i beställningen");
+  button.setAttribute("aria-label", ratt.namn);
   button.textContent = "Lägg i beställning";
 
   kort.append(bild, rubrik, text, pris, button);
