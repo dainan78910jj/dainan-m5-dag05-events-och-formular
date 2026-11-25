@@ -79,5 +79,32 @@ export function visaOrder(
   order: OrderRad[],
   meny: Ratt[],
 ): void {
-  // TODO
+  ref.lista.replaceChildren();
+
+  if (order.length > 0) {
+    order.forEach((o) => {
+      const dish = hittaRatt(meny, o.id);
+      if (!dish) {
+        return;
+      }
+
+      const price = formateraPris(o.antal * dish.pris);
+
+      const li = document.createElement("li");
+      const dishSpan = document.createElement("span");
+      dishSpan.textContent = `${o.antal} × ${dish.namn}`;
+      const priceSpan = document.createElement("span");
+      priceSpan.textContent = price;
+      li.append(dishSpan, priceSpan);
+
+      ref.lista.appendChild(li);
+    });
+
+    ref.tom.setAttribute("class", "dold");
+  } else {
+    ref.tom.removeAttribute("class");
+  }
+
+  const totalPrice = totalPris(order, meny);
+  ref.summa.textContent = formateraPris(totalPrice);
 }
